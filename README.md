@@ -14,4 +14,4 @@
 
 * 实现promise对象的状态改变，改变只有两种可能：从pending到fulfilled，和从pending到rejected
 * 实现一旦promise状态改变，再对promise对象添加回调函数，也会立刻得到这个结果
-* 
+* 在Promise构造函数里面，执行成功或者失败，保存status
