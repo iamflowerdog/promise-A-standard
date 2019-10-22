@@ -10,3 +10,8 @@
 * 如果是同步任务，会先去调用构造函数里面的 onFulfilled 方法 会报错 self.onFulfilled is not a function
 * 利用定时器异步执行这个思路，等待then方法执行后，再执行里面的代码
 
+### supportThreeStatus/ 支持三种状态 
+
+* 实现promise对象的状态改变，改变只有两种可能：从pending到fulfilled，和从pending到rejected
+* 实现一旦promise状态改变，再对promise对象添加回调函数，也会立刻得到这个结果
+* 
