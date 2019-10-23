@@ -35,7 +35,7 @@ function Chain (fn) {
     fn(reslove, reject); 
 }
 
-SynchTask.prototype.then = function (onFulfilled, onRejected) {
+Chain.prototype.then = function (onFulfilled, onRejected) {
     if (this.status === PENDING) {
         this.onFulfilled = onFulfilled; // 
         this.onRejected = onRejected;
