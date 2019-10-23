@@ -15,3 +15,12 @@
 * 实现promise对象的状态改变，改变只有两种可能：从pending到fulfilled，和从pending到rejected
 * 实现一旦promise状态改变，再对promise对象添加回调函数，也会立刻得到这个结果
 * 在Promise构造函数里面，执行成功或者失败，保存status
+
+### chain/ 支持链式调用
+
+* 因为链式调用是同步的，所以 `promise.then(f1).then(f2)...` 会先把f1、f2函数注册进promise对象实例的onFulfilledCallbacks属性中
+* 等回调成功后(status状态凝固，变成fulfilled) 通过forEach() 遍历回调数组执行回调函数
+`self.onFulfilledCallbacks.forEach((callback) => callback(self.value));`
+
+
+

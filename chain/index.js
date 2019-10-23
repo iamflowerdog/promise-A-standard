@@ -8,8 +8,9 @@ function Chain (fn) {
     self.value = null; 
     self.error = null; 
     self.status = PENDING;
-    self.onFulfilled = null; 
-    self.onRejected = null; 
+    self.onFulfilledCallbacks = [];
+    self.onRejectedCallbacks = [];
+    
 
     
     function reslove (value) { 
@@ -17,8 +18,10 @@ function Chain (fn) {
             setTimeout(() => {
                 self.status = FULFILLED; // 执行成功后保存状态
                 self.value = value;
-                self.onFulfilled(value); 
-            })
+                self.onFulfilledCallbacks.forEach(callback => {
+                    callback(self.value);
+                });
+            }, 0)
         }
     }
 
@@ -28,23 +31,24 @@ function Chain (fn) {
             setTimeout(() => {
                 self.status = REJECTED; // 执行失败后保存状态
                 self.error = error; 
-                self.onRejected(error); 
-            })
+                self.onRejectedCallbacks.forEach(callback => callback(self.value));
+            }, 0)
         }
     }
     fn(reslove, reject); 
 }
 
-SynchTask.prototype.then = function (onFulfilled, onRejected) {
+Chain.prototype.then = function (onFulfilled, onRejected) {
     if (this.status === PENDING) {
-        this.onFulfilled = onFulfilled; // 
-        this.onRejected = onRejected;
+        console.log('register');
+        this.onFulfilledCallbacks.push(onFulfilled);
+        this.onRejectedCallbacks.push(onRejected);
     } else if (this.status === FULFILLED) {
         this.onFulfilled(this.value);
     } else {
         this.onRejected(this.error);
     }
-    return this;
+    return this; // 为了支持链式调用，每次then()调用都会返回this
 }
 
 module.exports = Chain
