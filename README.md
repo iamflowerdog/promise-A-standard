@@ -28,4 +28,4 @@
 * 执行图
 ![promise流程图](https://github.com/iamflowerdog/promise-A-standard/blob/master/img/163d462a70a813f6.jpg)
 
-
+### test
