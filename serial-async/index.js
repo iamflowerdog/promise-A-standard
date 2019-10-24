@@ -40,7 +40,6 @@ SerialAsych.prototype.then = function (onFulfilled, onRejected) {
     // p.then(f1) 这个时候的self.value fs.readFile('./file/1.txt', "utf8") 返回的值
     const self = this;
     let bridgePromise;
-    console.log(bridgePromise);
     // 防止使用者不传成功或者失败的回调函数，给onFulfilled、onRejected默认回调函数
     onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
     onRejected = typeof onRejected === 'function' ? onRejected : error => { throw error };

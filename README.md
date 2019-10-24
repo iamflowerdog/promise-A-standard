@@ -25,4 +25,7 @@
 
 ### serial-async
 
+* 执行图
+![promise流程图]()
+
 
