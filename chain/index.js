@@ -44,9 +44,9 @@ Chain.prototype.then = function (onFulfilled, onRejected) {
         this.onFulfilledCallbacks.push(onFulfilled);
         this.onRejectedCallbacks.push(onRejected);
     } else if (this.status === FULFILLED) {
-        this.onFulfilled(this.value);
+        onFulfilled(this.value);
     } else {
-        this.onRejected(this.error);
+        onRejected(this.error);
     }
     return this; // 为了支持链式调用，每次then()调用都会返回this
 }

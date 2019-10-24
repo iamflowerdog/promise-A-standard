@@ -2,7 +2,7 @@ let Promise = require('./index');
 let fs = require('fs');
 
 let p = new Promise((resolve, reject) => {
-    fs.readFile('./file/3.txt', "utf8", function(err, data) {
+    fs.readFile('./file/1.txt', "utf8", function(err, data) {
         err ? reject(err) : resolve(data)
     });
 });
@@ -28,4 +28,4 @@ let f3 = function(data) {
 let errorLog = function(error) {
     console.log(error)
 }
-p.then(f1).then(f2).then(f3)
+p.then(f1, errorLog).then(f2, errorLog).then(f3, errorLog)
