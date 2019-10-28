@@ -2,7 +2,8 @@ let Promise = require("./mypromise")
 let fs = require("fs")
 
 let myPromise = new Promise((resolve, reject) => {
-    fs.readFile('../file/1.txt', "utf8", function(err, data) {
+    console.log(resolve, reject);
+    fs.readFile('./file/1.txt', "utf8", function(err, data) {
         err ? reject(err) : resolve(data)
     });
 });
@@ -16,6 +17,6 @@ function successLog(data) {
 function errorLog(error) {
     console.log(error)
 }
-// myPromise.then(successLog, errorLog); 
+myPromise.then(successLog, errorLog); 
 
 
