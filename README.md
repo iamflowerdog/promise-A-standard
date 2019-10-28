@@ -28,4 +28,10 @@
 * 执行图
 ![promise流程图](https://github.com/iamflowerdog/promise-A-standard/blob/master/img/163d462a70a813f6.jpg)
 
-### test
+### promise-a-plus/ 达到promise/A+ 规范
+
+* 安装 npm i promises-aplus-tests -g 
+* promises-aplus-tests promise-a-plus/index.js
+
+
+
