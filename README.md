@@ -33,5 +33,3 @@
 * 安装 npm i promises-aplus-tests -g 
 * promises-aplus-tests promise-a-plus/index.js
 
-
-
