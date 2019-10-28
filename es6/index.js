@@ -150,15 +150,15 @@ MyPromise.prototype.catch = function (reject) {
     return this.then(null, reject);
 }
 
+// 返回一个promise，然后给所有传入的promise的then方法中都注册上回调
 MyPromise.all = function (promises) {
     return new MyPromise(function (resolve, reject) {
-        let reslut = [];
+        let result = [];
         let count = 0;
         for (let i =0; i < promises.length; i++) {
             promises[i].then(function (data) {
-                reslut[i] = data;
+                result[i] = data;
                 if (++count === promises.length) {
-
                     resolve(result);
                 }
             }, function (error) {
@@ -168,6 +168,7 @@ MyPromise.all = function (promises) {
     });
 }
 
+// 不用等所有的promise都成功，谁快就把谁返回出去
 MyPromise.race = function (promises) {
     return new MyPromise(function(resolve, reject) {
         for (let i = 0; i < promises.length; i++) {
@@ -178,6 +179,19 @@ MyPromise.race = function (promises) {
             });
         }
     });
+}
+
+// 执行同步任务
+MyPromise.resolve = function (value) {
+    return new MyPromise (resolve => {
+        resolve(value);
+    });
+}
+
+MyPromise.reject = function (error) {
+    return new MyPromise ((resolve, reject) => {
+        reject(error);
+    })
 }
 
 // 执行测试用例需要用到的代码

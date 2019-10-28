@@ -24,3 +24,12 @@ Promise.race([p1, p2]).then(function(result) {
 }, function(error) {
     console.log(error)
 });
+
+// 执行同步任务
+Promise.resolve(123).then((res) => {
+    console.log(res);
+});
+
+Promise.reject(456).then(null, (error) => {
+    console.log(error)
+})

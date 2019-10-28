@@ -33,3 +33,11 @@
 * 安装 npm i promises-aplus-tests -g 
 * promises-aplus-tests promise-a-plus/index.js
 
+### es6/ 实现ES6中Promise的几个方法
+
+* MyPromise.all / race / resolve / reject
+
+> 为什么通过回调函数传入一个引用错误的值，nodejs在执行的时候不报引用错误？ 2019年10月30日
+
+
+
